@@ -107,7 +107,7 @@ const login = () => {
                 value="Log In"
                 onClick={onLogin}
                 className={`bg-[#008037] hover:shadow-lg rounded cursor-pointer text-white font-bold text-lg hover:bg-[#02421d] p-2 mt-8`}
-              ><h1 className='font-semibold'>Log In</h1></button>
+              ><span className='font-light'>Log In</span></button>
             </form>
             <div className="btn-wrapper text-center mt-5">
               <p className="mb-2 text-grey-50">or</p>

@@ -5,6 +5,7 @@ import {
   auth,
   createUserWithEmailAndPassword,
   updateProfile,
+  sendEmailVerification
 } from "../../utils/firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
 import toast, { Toaster } from "react-hot-toast";
@@ -23,14 +24,10 @@ const signup = () => {
     password: "",
   });
 
-  useEffect(() => {
-    if (user) {
-      router.push("/");
-    }
-  }, [user]);
+
+
   const onSignUp = (e) => {
     e.preventDefault();
-
     if (entries.email || entries.password || entries.name || entries.dob) {
       createUserWithEmailAndPassword(auth, entries.email, entries.password)
         .then((userCredentials) => {
@@ -40,13 +37,16 @@ const signup = () => {
             photoURL: entries.avatar,
           })
             .then(() => {
-              router.push("/");
+              sendEmailVerification(auth.currentUser);
+              router.replace("/auth/verification")
             })
             .catch((error) => {
-              toast.error("Oops! Something went wrong");
+              toast.error(error.message);
             });
         })
-        .catch(alert);
+        .catch((error) => {
+          toast.error(error.message);
+        });
     } else {
       toast.error("Fileds cannot be empty");
     }
@@ -147,7 +147,7 @@ const signup = () => {
                 onClick={onSignUp}
                 className={`bg-[#008037] h-12 rounded focus:border-[#008037] -lg cursor-pointer text-white font-bold text-lg hover:bg-[#02421d] p-2 mt-8`}
               >
-                Sign Up
+                <span className="font-semibold">Next</span>
               </button>
             </form>
 

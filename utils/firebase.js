@@ -7,6 +7,7 @@ import {
   signOut,
   updateProfile,
   signInWithEmailAndPassword,
+  sendEmailVerification
 } from "firebase/auth";
 
 const app = initializeApp({
@@ -30,4 +31,5 @@ export {
   signOut,
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
+  updateProfile,sendEmailVerification
 };
