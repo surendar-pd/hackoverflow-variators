@@ -25,7 +25,7 @@ const Login = () => {
     //   router.push("/auth/verification");
     // }
     if(user){
-      router.push("/home/dashboard");
+      router.push("/home");
     }
   }, [user]);
   const onLogin = (e) => {
