@@ -12,6 +12,8 @@ import {
 } from "../../utils/firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
 import toast, { Toaster } from "react-hot-toast";
+import logo from '../../assets/Logo.png'
+import Image from "next/image";
 
 const login = () => {
   const router = useRouter();
@@ -54,32 +56,33 @@ const login = () => {
       <div className="w-full flex flex-wrap">
         <div className="w-full md:w-1/2 flex flex-col">
           <div className="flex justify-center md:justify-start pt-12 md:pl-12 md:-mb-24">
-            <span
+            {/* <span
               onClick={() => router.push("/")}
               className={`bg-[#008037] cursor-pointer hover:bg-[#02421d] text-white font-bold text-xl p-4`}
             >
               Logo
-            </span>
+            </span> */}
+            <Image width="40px" height="40px" src={logo} alt="logo"/>
           </div>
 
           <div className="flex flex-col justify-center md:justify-start my-auto pt-8 md:pt-0 px-8 md:px-24 lg:px-32">
-            <p className="text-center text-3xl">Welcome.</p>
+            <p className="text-center text-3xl">FEDEN</p>
             <form className="flex flex-col pt-3 md:pt-8">
               <div className="flex flex-col pt-4">
-                <label className="text-lg">Email</label>
+                {/* <label className="text-lg">Email</label> */}
                 <input
                   type="email"
-                  placeholder="your@email.com"
+                  placeholder="Email Address"
                   value={entries.email}
                   onChange={(e) =>
                     setEntries({ ...entries, email: e.target.value })
                   }
-                  className="hover:shadow-md shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mt-1 leading-tight focus:outline-none focus:shadow-outline"
+                  className="appearance-none border rounded w-full py-2 px-3 h-12 text-gray-700 mt-1 leading-tight focus:outline-none focus:shadow-outline focus:border-[#008037]"
                 />
               </div>
 
               <div className="flex flex-col pt-4">
-                <label className="text-lg">Password</label>
+                {/* <label className="text-lg">Password</label> */}
                 <input
                   type="password"
                   placeholder="Password"
@@ -87,40 +90,31 @@ const login = () => {
                   onChange={(e) =>
                     setEntries({ ...entries, password: e.target.value })
                   }
-                  className="hover:shadow-md shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mt-1 leading-tight focus:outline-none focus:shadow-outline"
+                  className="appearance-none border rounded w-full py-2 px-3 h-12 text-gray-700 mt-1 leading-tight focus:outline-none focus:shadow-outline focus:border-[#008037]"
                 />
               </div>
-
-              <input
+              {/* <input
                 type="submit"
                 value="Log In"
                 onClick={onLogin}
-                className={`bg-[#008037] hover:shadow-lg rounded-lg cursor-pointer text-white font-bold text-lg hover:bg-[#02421d] p-2 mt-8`}
-              />
+                className={`bg-[#008037] hover:shadow-lg rounded cursor-pointer text-white font-bold text-lg hover:bg-[#02421d] p-2 mt-8`}
+              /> */}
+              <button
+                type="submit"
+                value="Log In"
+                onClick={onLogin}
+                className={`bg-[#008037] hover:shadow-lg rounded cursor-pointer text-white font-bold text-lg hover:bg-[#02421d] p-2 mt-8`}
+              ><h1 className='font-semibold'>Log In</h1></button>
             </form>
             <div className="btn-wrapper text-center mt-5">
               <p className="mb-2 text-grey-50">or</p>
               <button
-                className="bg-white active:bg-blueGray-50 text-blueGray-700 font-normal px-4 py-2 rounded outline-none focus:outline-none mr-2 mb-1 uppercase shadow hover:shadow-md inline-flex items-center font-bold text-xs ease-linear transition-all duration-150"
-                type="button"
-              >
-                <GitHubIcon className="w-5 mr-1" />
-                <span className="hidden sm:inline-flex ">Github</span>
-              </button>
-              <button
-                className="bg-white active:bg-blueGray-50 text-blueGray-700 font-normal px-4 py-2 rounded outline-none focus:outline-none mr-1 mb-1 uppercase shadow hover:shadow-md inline-flex items-center font-bold text-xs ease-linear transition-all duration-150"
+                className="bg-white w-full active:bg-blueGray-50 text-blueGray-700 font-normal px-4 py-2 rounded outline-none focus:outline-none mr-1 mb-1 uppercase shadow hover:shadow-md flex justify-center items-center text-xs ease-linear transition-all duration-150"
                 type="button"
                 onClick={onGoogleLogin}
               >
                 <GoogleIcon className="w-5 mr-1" />
-                <span className="hidden sm:inline-flex ">Google</span>
-              </button>
-              <button
-                className="bg-white active:bg-blueGray-50 text-blueGray-700 font-normal px-4 py-2 rounded outline-none focus:outline-none mr-1 mb-1 uppercase shadow hover:shadow-md inline-flex items-center font-bold text-xs ease-linear transition-all duration-150"
-                type="button"
-              >
-                <TwitterIcon className="w-5 mr-1" />
-                <span className="hidden sm:inline-flex ">Twitter</span>
+                <span className="">Google</span>
               </button>
             </div>
             <div className="text-center pt-12 pb-12">

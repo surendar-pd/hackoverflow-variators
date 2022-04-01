@@ -2,7 +2,7 @@ import Head from "next/head";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { auth, signOut } from "../utils/firebase";
 import { useRouter } from "next/router";
-import assets/Logo.png;
+import Logo from "assets/Logo.png";
 
 export default function Home() {
   const [user, loading] = useAuthState(auth);
