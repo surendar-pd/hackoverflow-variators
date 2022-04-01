@@ -18,12 +18,10 @@ const Dashboard = () => {
 
   useEffect(() => {
     if (user) {
-
       onSnapshot(doc(db,"users",user?.uid),(snapshot) =>{
         setCurrentUser(snapshot.data());
       })
     }
-
   },[])
 
   const toIndianCurrency = (num) => {

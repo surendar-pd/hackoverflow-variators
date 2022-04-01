@@ -5,6 +5,7 @@ import Header from '../../components/Header';
 import Dashboard from './dashboard';
 import Card from './card';
 import Profile from './profile';
+import Transaction from './transaction';
 import {auth} from '../../utils/firebase';
 import { useAuthState} from "react-firebase-hooks/auth";
 
@@ -28,7 +29,9 @@ const Index = () => {
                     : currentPage === "profile"?
                     <Profile/>
                     : currentPage === "card"?
-                    <Card/>
+                    <Card setCurrentPage={setCurrentPage}/>
+                    : currentPage === "transaction"?
+                    <Transaction/>
                     :""
                 }
             </div>

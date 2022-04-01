@@ -10,7 +10,7 @@ const DocVerify = () => {
 
     useEffect(() => {
         setTimeout(() => {
-            router.replace("/home/dashboard")
+            router.replace("/home")
         },6000)
     })
     return (
