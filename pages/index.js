@@ -8,6 +8,7 @@ import CashApp from "../assets/CashApp.svg";
 import splitpay from "../assets/splitpay.svg";
 import Budget from "../assets/Budget.svg";
 import Asset1 from "../assets/Asset1.svg";
+import Link from "next/link";
 // import "bootstrap/dist/js/bootstrap.js";
 // import 'https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;400;500&display=swap'
 export default function Home() {
@@ -15,7 +16,9 @@ export default function Home() {
   const router = useRouter();
 
   return (
-    <div className="">
+    <div 
+    // className="font-Montserrat"
+    >
       <Head>
         <title>HackOverflow</title>
         <link rel="icon" href="/favicon.ico" />
@@ -27,80 +30,82 @@ export default function Home() {
             <Image src={logo} alt="" width={40} height={34} />
           </a>
 
-          <div className="collapse navbar-collapse" id="navbarSupportedContent">
+          {/* <div> */}
             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
               <li className="nav-item">
-                <a
+                <Link
                   className="nav-link active navcontents"
                   aria-current="page"
-                  href="#"
+                  href="/"
                 >
                   HOME
-                </a>
+                </Link>
               </li>
               <li className="nav-item">
-                <a
+                <Link
                   className="nav-link active navcontents"
                   aria-current="page"
-                  href="#"
+                  href="/auth/login"
                 >
                   SIGN IN
-                </a>
+                </Link>
               </li>
             </ul>
-          </div>
+          {/* </div> */}
         </div>
       </nav>
 
       <div className="Banner">
-        <Image src={CashApp}/>
+        <Image src={CashApp} alt={'cash-app'}/>
       </div>
 
-      <div className="Content1 text-green-500">
-        
-        <p>
-          THE PLATFORM TO HELP YOU BUT THE THINGS YOU ALWAYS WANTED TO, WITH THE
-          SPEND NOW PAY LATER FEATURE
-        </p>
-        <button onClick={() => signOut(auth)}>sign out</button>
-        <Image
-          src={Asset1}
-          className="image1"
-          alt=""
-          width={600}
-          height={120}
-        />
-      </div>
+      <div className="p-4">
+        <div className="Content1 my-4">
+          <h1 className="text-lg text-center font-bold">SPEND NOW PAY LATER</h1>
+          <p className="text-sm text-center">
+            THE PLATFORM TO HELP YOU BUT THE THINGS YOU ALWAYS WANTED TO, WITH THE
+            SPEND NOW PAY LATER FEATURE
+          </p>
+          <button onClick={() => signOut(auth)}>sign out</button>
+          <Image
+            src={Asset1}
+            className="image1"
+            alt=""
+            width={250}
+            height={250}
+          />
+        </div>
 
-      <div className="Content2 text-green-500">
-        BUDGET MANAGEMENT
-        <p>
-          A PLATFORM TO HELP YOU HAVE A TRACK ON YOUR EXPENDITURE AND HELP YOU
-          SAVE MONEY
-        </p>
-        <Image
-          src={Budget}
-          className="image2"
-          alt=""
-          width={125}
-          height={120}
-        />
-      </div>
+        <div className="Content2 my-4">
+          <h1 className="text-lg text-center font-bold">BUDGET MANAGEMENT</h1>
+          <p className="text-sm text-center">
+            A PLATFORM TO HELP YOU HAVE A TRACK ON YOUR EXPENDITURE AND HELP YOU
+            SAVE MONEY
+          </p>
+          <Image
+            src={Budget}
+            className="image2"
+            alt=""
+            width={250}
+            height={250}
+          />
+        </div>
 
 
-      <div className="Content3 text-green-500">
-        SPLIT & PAY
-        <p>
-          A PLATFORM WHERE APART FROM DIGITALLY PAYING, YOU CAN ALSO SPILT THE
-          BILL
-        </p>
-        <Image
-          src={splitpay}
-          className="image3"
-          alt=""
-          width={125}
-          height={120}
-        />
+        <div className="Content3 my-4">
+          <h1 className="text-lg text-center font-bold">SPILT & PAY</h1>
+          <p className="text-sm text-center">
+            A PLATFORM WHERE APART FROM DIGITALLY PAYING, YOU CAN ALSO SPILT THE
+            BILL
+          </p>
+          <Image
+            src={splitpay}
+            className="image3"
+            alt=""
+            width={250}
+            height={250}
+          />
+        </div>
       </div>
 
     </div>

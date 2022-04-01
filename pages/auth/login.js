@@ -15,7 +15,7 @@ import toast, { Toaster } from "react-hot-toast";
 import logo from '../../assets/Logo.png'
 import Image from "next/image";
 
-const login = () => {
+const Login = () => {
   const router = useRouter();
   const [user, loading] = useAuthState(auth);
   const [entries, setEntries] = useState({
@@ -23,8 +23,8 @@ const login = () => {
     password: "",
   });
   useEffect(() => {
-    if (user) {
-      router.push("/");
+    if (!user.emailVerified) {
+      router.push("/auth/verification");
     }
   }, [user]);
   const onLogin = (e) => {
@@ -46,6 +46,7 @@ const login = () => {
   const onGoogleLogin = () => {
     signInWithPopup(auth, googleProvider)
       .then(() => {
+        router.replace("/auth/verification")
         console.log(auth.currentUser);
       })
       .catch(alert);
@@ -59,15 +60,8 @@ const login = () => {
       <div className="w-full flex flex-wrap">
         <div className="w-full md:w-1/2 flex flex-col">
           <div className="flex justify-center md:justify-start pt-12 md:pl-12 md:-mb-24">
-            {/* <span
-              onClick={() => router.push("/")}
-              className={`bg-[#008037] cursor-pointer hover:bg-[#02421d] text-white font-bold text-xl p-4`}
-            >
-              Logo
-            </span> */}
             <Image width="40px" height="40px" src={logo} alt="logo"/>
           </div>
-
           <div className="flex flex-col justify-center md:justify-start my-auto pt-8 md:pt-0 px-8 md:px-24 lg:px-32">
             <p className="text-center text-3xl">FEDEN</p>
             <form className="flex flex-col pt-3 md:pt-8">
@@ -96,38 +90,32 @@ const login = () => {
                   className="appearance-none border rounded w-full py-2 px-3 h-12 text-gray-700 mt-1 leading-tight focus:outline-none focus:shadow-outline focus:border-[#008037]"
                 />
               </div>
-              {/* <input
-                type="submit"
-                value="Log In"
-                onClick={onLogin}
-                className={`bg-[#008037] hover:shadow-lg rounded cursor-pointer text-white font-bold text-lg hover:bg-[#02421d] p-2 mt-8`}
-              /> */}
               <button
                 type="submit"
                 value="Log In"
                 onClick={onLogin}
                 className={`bg-[#008037] hover:shadow-lg rounded cursor-pointer text-white font-bold text-lg hover:bg-[#02421d] p-2 mt-8`}
-              ><span className='font-light'>Log In</span></button>
+              ><span className='font-normal'>Log In</span></button>
             </form>
-            <div className="btn-wrapper text-center mt-5">
+            <div className="btn-wrapper text-center mt-2">
               <p className="mb-2 text-grey-50">or</p>
               <button
-                className="bg-white w-full active:bg-blueGray-50 text-blueGray-700 font-normal px-4 py-2 rounded outline-none focus:outline-none mr-1 mb-1 uppercase shadow hover:shadow-md flex justify-center items-center text-xs ease-linear transition-all duration-150"
+                className="bg-white w-full active:bg-blueGray-50 text-blueGray-700 font-normal px-4 py-2 rounded outline-none focus:outline-none mr-1 mb-1 uppercase shadow-sm hover:shadow-md flex justify-center items-center text-xs ease-linear transition-all duration-150"
                 type="button"
                 onClick={onGoogleLogin}
               >
                 <GoogleIcon className="w-5 mr-1" />
-                <span className="">Google</span>
+                <span className="font-normal">Google</span>
               </button>
             </div>
-            <div className="text-center pt-12 pb-12">
-              <p>
-                Don't have an account?{" "}
+            <div className="text-center py-8">
+              <p className="">
+                Don&apos;t have an account?&nbsp;
                 <span
-                  className={`text-[#008037] cursor-pointer hover:text-[#02421d] font-bold`}
+                  className={`text-[#008037] cursor-pointer hover:text-[#02421d]`}
                   onClick={() => router.push("/auth/signup")}
                 >
-                  Register here.
+                  Sign Up
                 </span>
               </p>
             </div>
@@ -145,4 +133,4 @@ const login = () => {
   );
 };
 
-export default login;
+export default Login;

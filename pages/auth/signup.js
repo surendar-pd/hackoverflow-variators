@@ -12,7 +12,7 @@ import toast, { Toaster } from "react-hot-toast";
 import Image from "next/image";
 import logo from "../../assets/Logo.png";
 
-const signup = () => {
+const SignUp = () => {
   const router = useRouter();
   const [user, loading] = useAuthState(auth);
 
@@ -61,6 +61,7 @@ const signup = () => {
       <div className="w-full flex flex-wrap">
         <div className="w-1/2 shadow-2xl">
           <img
+            alt="pic"
             className="object-cover w-full h-screen hidden md:block"
             src="https://images.unsplash.com/photo-1617634667039-8e4cb277ab46?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxleHBsb3JlLWZlZWR8Mjl8fHxlbnwwfHx8fA%3D%3D&auto=format&fit=crop&w=500&q=60"
           />
@@ -158,7 +159,7 @@ const signup = () => {
                   className={`text-[#008037] cursor-pointer hover:text-[#02421d] font-bold`}
                   onClick={() => router.push("/auth/login")}
                 >
-                  Login here.
+                  Sign In
                 </span>
               </p>
             </div>
@@ -169,4 +170,4 @@ const signup = () => {
   );
 };
 
-export default signup;
+export default SignUp;
