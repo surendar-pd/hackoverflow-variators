@@ -39,7 +39,9 @@ const signup = () => {
             displayName: entries.name,
             photoURL: entries.avatar,
           })
-            .then(() => {})
+            .then(() => {
+              router.push("/");
+            })
             .catch((error) => {
               toast.error("Oops! Something went wrong");
             });

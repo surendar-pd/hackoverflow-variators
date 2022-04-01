@@ -31,7 +31,10 @@ const login = () => {
     e.preventDefault();
     if (entries.email || entries.password) {
       signInWithEmailAndPassword(auth, entries.email, entries.password)
-        .then(() => {})
+        .then((result) => {
+          const user = result.user;
+          console.log(auth.currentUser);
+        })
         .catch((err) => {
           toast.error(err.message);
         });
@@ -42,8 +45,8 @@ const login = () => {
 
   const onGoogleLogin = () => {
     signInWithPopup(auth, googleProvider)
-      .then((user) => {
-        console.log(user.displayName);
+      .then(() => {
+        console.log(auth.currentUser);
       })
       .catch(alert);
   };
