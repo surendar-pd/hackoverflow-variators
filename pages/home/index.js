@@ -34,7 +34,7 @@ return (
         ) : currentPage === "profile" ? (
             <Profile />
         ) : currentPage === "card" ? (
-            <Card />
+            <Card setCurrentPage={setCurrentPage}/>
         ) : currentPage === "graph" ? (
             <Graph />
         ) : currentPage === "transaction"?
