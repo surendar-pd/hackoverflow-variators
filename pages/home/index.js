@@ -33,9 +33,9 @@ const Index = () => {
             <Dashboard currentUser={currentUser} />
           ) : currentPage === "profile" ? (
             <Profile />
-          ) : currentPage === "card" ? (
-            <Card />
-          ) : currentPage === "graph" ? (
+        ) : currentPage === "card" ? (
+            <Card setCurrentPage={setCurrentPage}/>
+        ) : currentPage === "graph" ? (
             <Graph />
           ) : currentPage === "transaction" ? (
             <Transaction />

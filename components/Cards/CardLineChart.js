@@ -7,18 +7,18 @@ export default function CardLineChart() {
       type: "line",
       data: {
         labels: [
-          "January",
-          "February",
-          "March",
-          "April",
+          "Jan",
+          "Feb",
+          "Mar",
+          "Apr",
           "May",
-          "June",
-          "July",
-          "August",
-          "September",
-          "October",
-          "November",
-          "December",
+          "Jun",
+          "Jul",
+          "Aug",
+          "Sept",
+          "Oct",
+          "Nov",
+          "Dec",
         ],
         datasets: [
           {
@@ -113,7 +113,7 @@ export default function CardLineChart() {
               <h6 className="uppercase text-blueGray-100 mb-1 text-xs font-semibold">
                 Overview
               </h6>
-              <h2 className="text-black text-xl font-semibold">Sales value</h2>
+              <h2 className="text-black text-xl font-semibold">Budget value</h2>
             </div>
           </div>
         </div>
