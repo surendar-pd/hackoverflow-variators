@@ -11,41 +11,42 @@ import Graph from "./graph";
 import Transaction from "./Transaction";
 
 const Index = () => {
-const [user] = useAuthState(auth);
-const [currentUser, setCurrentUser] = useState({});
+  const [user] = useAuthState(auth);
+  const [currentUser, setCurrentUser] = useState({});
 
-const [currentPage, setCurrentPage] = useState("dashboard");
+  const [currentPage, setCurrentPage] = useState("dashboard");
 
-useEffect(() => {
+  useEffect(() => {
     if (user) {
-    onSnapshot(doc(db, "users", user?.uid), (snapshot) => {
+      onSnapshot(doc(db, "users", user?.uid), (snapshot) => {
         setCurrentUser(snapshot.data());
-    });
+      });
     }
-}, [user]);
+  }, [user]);
 
-return (
+  return (
     <div className="w-full h-screen flex flex-col">
-    <div className="w-full flex-1 p-4">
+      <div className="w-full flex-1 p-4">
         <Header />
         <div className="w-full h-full">
-        {currentPage === "dashboard" ? (
+          {currentPage === "dashboard" ? (
             <Dashboard currentUser={currentUser} />
-        ) : currentPage === "profile" ? (
+          ) : currentPage === "profile" ? (
             <Profile />
-        ) : currentPage === "card" ? (
+          ) : currentPage === "card" ? (
             <Card />
-        ) : currentPage === "graph" ? (
+          ) : currentPage === "graph" ? (
             <Graph />
-        ) : currentPage === "transaction"?
-            <Transaction/>
-            :""
-        }
+          ) : currentPage === "transaction" ? (
+            <Transaction />
+          ) : (
+            ""
+          )}
         </div>
+      </div>
+      <BottomNavi setCurrentPage={setCurrentPage} />
     </div>
-    <BottomNavi setCurrentPage={setCurrentPage} />
-    </div>
-);
+  );
 };
 
 export default Index;
