@@ -1,44 +1,51 @@
-import React, { useEffect, useState } from 'react'
-import BottomNavi from '../../components/BottomNavi';
-import {useRouter} from 'next/router';
-import Header from '../../components/Header';
-import Dashboard from './dashboard';
-import Card from './card';
-import Profile from './profile';
-import Transaction from './transaction';
-import {auth} from '../../utils/firebase';
-import { useAuthState} from "react-firebase-hooks/auth";
-
+import React, { useEffect, useState } from "react";
+import BottomNavi from "../../components/BottomNavi";
+import { useRouter } from "next/router";
+import Header from "../../components/Header";
+import Dashboard from "./dashboard";
+import Card from "./card";
+import Profile from "./profile";
+import { auth, onSnapshot, doc, db } from "../../utils/firebase";
+import { useAuthState } from "react-firebase-hooks/auth";
+import Graph from "./graph";
+import Transaction from "./Transaction";
 
 const Index = () => {
+const [user] = useAuthState(auth);
+const [currentUser, setCurrentUser] = useState({});
 
-    const [user] = useAuthState(auth);
+const [currentPage, setCurrentPage] = useState("dashboard");
 
-    const router = useRouter();
-    const [currentPage, setCurrentPage] = useState("dashboard")
+useEffect(() => {
+    if (user) {
+    onSnapshot(doc(db, "users", user?.uid), (snapshot) => {
+        setCurrentUser(snapshot.data());
+    });
+    }
+}, [user]);
 
-
-    return (
+return (
     <div className="w-full h-screen flex flex-col">
-        <div className="w-full flex-1 p-4">
-            <Header/>
-            <div className="w-full h-full">
-                {
-                    currentPage === "dashboard"?
-                    <Dashboard/>
-                    : currentPage === "profile"?
-                    <Profile/>
-                    : currentPage === "card"?
-                    <Card setCurrentPage={setCurrentPage}/>
-                    : currentPage === "transaction"?
-                    <Transaction/>
-                    :""
-                }
-            </div>
+    <div className="w-full flex-1 p-4">
+        <Header />
+        <div className="w-full h-full">
+        {currentPage === "dashboard" ? (
+            <Dashboard currentUser={currentUser} />
+        ) : currentPage === "profile" ? (
+            <Profile />
+        ) : currentPage === "card" ? (
+            <Card />
+        ) : currentPage === "graph" ? (
+            <Graph />
+        ) : currentPage === "transaction"?
+            <Transaction/>
+            :""
+        }
         </div>
-        <BottomNavi setCurrentPage={setCurrentPage}/>
     </div>
-    )
-}
+    <BottomNavi setCurrentPage={setCurrentPage} />
+    </div>
+);
+};
 
-export default Index
+export default Index;
