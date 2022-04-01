@@ -8,7 +8,7 @@ import Profile from "./profile";
 import { auth, onSnapshot, doc, db } from "../../utils/firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
 import Graph from "./graph";
-import Transaction from "./Transaction";
+import Transaction from "./transaction";
 
 const Index = () => {
 const [user] = useAuthState(auth);
@@ -38,7 +38,7 @@ return (
         ) : currentPage === "graph" ? (
             <Graph />
         ) : currentPage === "transaction"?
-            <Transaction/>
+            <Transaction setCurrentPage={setCurrentPage}/>
             :""
         }
         </div>
