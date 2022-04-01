@@ -1,10 +1,18 @@
-import React from 'react'
+import React,{useEffect, useState} from 'react'
 import Image from "next/image"
 import pendingSvg from "../../assets/pending.svg";
 import { InfinitySpin } from 'react-loader-spinner'
-
+import {useRouter} from 'next/router'
 
 const DocVerify = () => {
+
+    const router = useRouter();
+
+    useEffect(() => {
+        setTimeout(() => {
+            router.replace("/home/dashboard")
+        },6000)
+    })
     return (
         <div className="w-full h-screen p-4">
             <div className="w-full h-1/2 flex justify-center items-center">

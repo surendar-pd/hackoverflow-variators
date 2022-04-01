@@ -6,8 +6,6 @@ import GitHubIcon from "@mui/icons-material/GitHub";
 import TwitterIcon from "@mui/icons-material/Twitter";
 import {
   auth,
-  googleProvider,
-  signInWithPopup,
   signInWithEmailAndPassword,
 } from "../../utils/firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
@@ -23,17 +21,19 @@ const Login = () => {
     password: "",
   });
   useEffect(() => {
-    if (!user.emailVerified) {
-      router.push("/auth/verification");
+    // if (!user?.emailVerified) {
+    //   router.push("/auth/verification");
+    // }
+    if(user){
+      router.push("/home/dashboard");
     }
   }, [user]);
   const onLogin = (e) => {
     e.preventDefault();
     if (entries.email || entries.password) {
       signInWithEmailAndPassword(auth, entries.email, entries.password)
-        .then((result) => {
-          const user = result.user;
-          console.log(auth.currentUser);
+        .then(() => {
+          toast.success("Logged in Successfully !!")
         })
         .catch((err) => {
           toast.error(err.message);
@@ -43,14 +43,6 @@ const Login = () => {
     }
   };
 
-  const onGoogleLogin = () => {
-    signInWithPopup(auth, googleProvider)
-      .then(() => {
-        router.replace("/auth/verification")
-        console.log(auth.currentUser);
-      })
-      .catch(alert);
-  };
   return (
     <div className="bg-white font-family-karla h-screen">
       <Toaster position="top-right" reverseOrder={true} />
@@ -97,17 +89,6 @@ const Login = () => {
                 className={`bg-[#008037] hover:shadow-lg rounded cursor-pointer text-white font-bold text-lg hover:bg-[#02421d] p-2 mt-8`}
               ><span className='font-normal'>Log In</span></button>
             </form>
-            <div className="btn-wrapper text-center mt-2">
-              <p className="mb-2 text-grey-50">or</p>
-              <button
-                className="bg-white w-full active:bg-blueGray-50 text-blueGray-700 font-normal px-4 py-2 rounded outline-none focus:outline-none mr-1 mb-1 uppercase shadow-sm hover:shadow-md flex justify-center items-center text-xs ease-linear transition-all duration-150"
-                type="button"
-                onClick={onGoogleLogin}
-              >
-                <GoogleIcon className="w-5 mr-1" />
-                <span className="font-normal">Google</span>
-              </button>
-            </div>
             <div className="text-center py-8">
               <p className="">
                 Don&apos;t have an account?&nbsp;

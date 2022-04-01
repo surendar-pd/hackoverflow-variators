@@ -1,14 +1,14 @@
 import { initializeApp } from "firebase/app";
 import {
   getAuth,
-  GoogleAuthProvider,
-  signInWithPopup,
   createUserWithEmailAndPassword,
   signOut,
   updateProfile,
   signInWithEmailAndPassword,
-  sendEmailVerification
+  sendEmailVerification,
+  
 } from "firebase/auth";
+import {doc,setDoc,getFirestore, onSnapshot } from "firebase/firestore";
 
 const app = initializeApp({
   apiKey: "AIzaSyAjhaWzQxd7MS-VhrzDPcud6sDjSgADsQI",
@@ -21,15 +21,15 @@ const app = initializeApp({
 });
 
 const auth = getAuth();
-const googleProvider = new GoogleAuthProvider();
+const db = getFirestore();
+
 
 export {
   app,
   auth,
-  signInWithPopup,
-  googleProvider,
   signOut,
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
-  updateProfile,sendEmailVerification
+  updateProfile,sendEmailVerification,
+  setDoc,doc,db, onSnapshot
 };

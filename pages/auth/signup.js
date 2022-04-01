@@ -5,7 +5,8 @@ import {
   auth,
   createUserWithEmailAndPassword,
   updateProfile,
-  sendEmailVerification
+  sendEmailVerification,
+  setDoc, doc, db
 } from "../../utils/firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
 import toast, { Toaster } from "react-hot-toast";
@@ -38,7 +39,20 @@ const SignUp = () => {
           })
             .then(() => {
               sendEmailVerification(auth.currentUser);
-              router.replace("/auth/verification")
+              setDoc(doc(db, "users", user.uid),{
+                name: entries.name,
+                dob: entries.dob,
+                email: entries.email,
+                avatar: entries.avatar,
+                uid: user.uid,
+                fedenid: entries.email.split("@")[0] + "@okfeden",
+                balance: "10000",
+              },{merge: true}).then(() => {
+                
+                router.replace("/auth/verification")
+              }).catch(err => toast.error(err.message));
+
+
             })
             .catch((error) => {
               toast.error(error.message);

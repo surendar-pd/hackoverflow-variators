@@ -31,8 +31,8 @@ export default function Home() {
           </a>
 
           {/* <div> */}
-            <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-              <li className="nav-item">
+            <ul className="flex-row navbar-nav me-auto mb-2 mb-lg-0">
+              <li className="nav-item mr-3">
                 <Link
                   className="nav-link active navcontents"
                   aria-current="page"
@@ -66,7 +66,6 @@ export default function Home() {
             THE PLATFORM TO HELP YOU BUT THE THINGS YOU ALWAYS WANTED TO, WITH THE
             SPEND NOW PAY LATER FEATURE
           </p>
-          <button onClick={() => signOut(auth)}>sign out</button>
           <Image
             src={Asset1}
             className="image1"
