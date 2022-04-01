@@ -32,7 +32,15 @@ const signup = () => {
     if (entries.email || entries.password || entries.name || entries.dob) {
       createUserWithEmailAndPassword(auth, entries.email, entries.password)
         .then((userCredentials) => {
-          const user = 
+          const user = userCredentials.user;
+          updateProfile(auth.currentUser, {
+            displayName: entries.name,
+            photoURL: entries.avatar,
+          })
+            .then(() => {})
+            .catch((error) => {
+              toast.error("Oops! Something went wrong");
+            });
         })
         .catch(alert);
     } else {
