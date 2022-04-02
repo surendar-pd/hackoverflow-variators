@@ -8,7 +8,7 @@ import {
   sendEmailVerification,
   
 } from "firebase/auth";
-import {doc,setDoc,getFirestore, onSnapshot,collection } from "firebase/firestore";
+import {doc,setDoc,getFirestore, onSnapshot,addDoc,serverTimestamp,collection } from "firebase/firestore";
 
 const app = initializeApp({
   apiKey: "AIzaSyAjhaWzQxd7MS-VhrzDPcud6sDjSgADsQI",
@@ -31,5 +31,5 @@ export {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
   updateProfile,sendEmailVerification,
-  setDoc,doc,db, onSnapshot,collection
+  setDoc,doc,db, onSnapshot,addDoc,collection,serverTimestamp
 };
