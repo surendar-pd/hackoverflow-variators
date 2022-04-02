@@ -49,7 +49,6 @@ const ScanQr = ({setCurrentPage}) => {
             onResult={(result, error) => {
               if (!!result) {
                 setScanedResult(result?.text);
-                // router.push({pathname: '/home/amount', state: result?.text});
               }
               if (!!error) {
                 console.log(error);

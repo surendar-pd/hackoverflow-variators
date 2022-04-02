@@ -32,6 +32,7 @@ const Amount = ({scanedResult, setScanedResult}) => {
 
 
   const pay = () => {
+    router.replace("/auth/setpin");
     setDoc(doc(db, "users", payer?.uid),{
       balance: payer.balance - parseInt(amount),
     },{merge: true}).then(() => {
@@ -76,7 +77,7 @@ const Amount = ({scanedResult, setScanedResult}) => {
           <button 
             onClick={pay}
             className={`bg-[#008037] h-12 rounded focus:border-[#008037] -lg cursor-pointer text-white font-bold text-lg hover:bg-[#02421d] p-2`}
-          ><span className="text-normal font-light">Pay</span></button>
+          ><span className="text-normal font-light">Next</span></button>
         </div>
       </div>
     </div>

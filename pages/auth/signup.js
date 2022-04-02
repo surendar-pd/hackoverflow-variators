@@ -50,6 +50,7 @@ const SignUp = () => {
                 email: entries.email,
                 avatar: entries.avatar,
                 uid: user.uid,
+                pin: false,
                 fedenid: entries.email.split("@")[0] + "@okfeden",
                 balance: "10000",
               },{merge: true}).then(() => {

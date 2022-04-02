@@ -38,7 +38,7 @@ return (
         ) : currentPage === "graph" ? (
             <Graph />
         ) : currentPage === "transaction"?
-            <Transaction setCurrentPage={setCurrentPage}/>
+            <Transaction currentUser={currentUser} setCurrentPage={setCurrentPage}/>
             :""
         }
         </div>
