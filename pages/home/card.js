@@ -2,6 +2,7 @@ import React from 'react';
 import cardSvg from "../../assets/card.svg";
 import Image from 'next/image';
 import {useRouter} from 'next/router';
+// import {useAuthState} from "react-firebase-hooks/auth";
 
 const Card = ({setCurrentPage}) => {
 
