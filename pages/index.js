@@ -9,30 +9,28 @@ import splitpay from "../assets/splitpay.svg";
 import Budget from "../assets/Budget.svg";
 import Asset1 from "../assets/Asset1.svg";
 import Link from "next/link";
-// import "bootstrap/dist/js/bootstrap.js";
-// import 'https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;400;500&display=swap'
+
 export default function Home() {
   const [user, loading] = useAuthState(auth);
   const router = useRouter();
 
   return (
-    <div 
-    // className="font-Montserrat"
-    >
+    <div>
+    <div>
       <Head>
         <title>HackOverflow</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <nav className="navbar navbar-expand-md navbar-light bg-light">
+      <nav className="navbar navbar-expand-md navbar-dark bg-green-500">
         <div className="container-fluid">
           <a className="navbar-brand" href="#">
             <Image src={logo} alt="" width={40} height={34} />
           </a>
 
-          {/* <div> */}
-            <ul className="flex-row navbar-nav me-auto mb-2 mb-lg-0">
-              <li className="nav-item mr-3">
+          
+            <ul className="navbar-nav me-auto mb-2 mb-lg-0 flex-row font-medium text-lg text-white lg:font-bold ">
+              <li className="nav-item mr-5 ">
                 <Link
                   className="nav-link active navcontents"
                   aria-current="page"
@@ -41,71 +39,95 @@ export default function Home() {
                   HOME
                 </Link>
               </li>
+              
               <li className="nav-item">
                 <Link
                   className="nav-link active navcontents"
                   aria-current="page"
-                  href="/auth/login"
+                  href="#Content"
                 >
-                  SIGN IN
+                  FEATURES
                 </Link>
               </li>
             </ul>
-          {/* </div> */}
-        </div>
+          
+            <ul className="navbar-nav flex-row flex-right font-medium text-lg mr-2 text-white lg:font-bold">
+              <li className="nav-item">
+                <Link
+                  className="nav-link active navcontents "
+                  aria-current="page"
+                  href="/auth/login"
+                >
+                SIGN IN/REGISTER
+                </Link>
+              </li>
+
+            </ul>
+          </div>
+          
+  
       </nav>
 
       <div className="Banner">
         <Image src={CashApp} alt={'cash-app'}/>
       </div>
 
-      <div className="p-4">
-        <div className="Content1 my-4">
-          <h1 className="text-lg text-center font-bold">SPEND NOW PAY LATER</h1>
-          <p className="text-sm text-center">
+      
+        <div className="Content1 my-4 lg:mx-7 lg:text-center my-12" id="Content">
+          <div className="text-lg text-center  font-bold lg:text-4xl lg:mb-2 lg:mt-6 lg:float-left lg:w-1/2 hover:-translate-y-5 transform transition ">SPEND NOW PAY LATER
+          <p className="text-sm text-left lg:text-xl text-green-500 lg:w-1/2 lg:my-7 lg:mx-12">
             THE PLATFORM TO HELP YOU BUT THE THINGS YOU ALWAYS WANTED TO, WITH THE
             SPEND NOW PAY LATER FEATURE
           </p>
+          </div>
+          
           <Image
             src={Asset1}
             className="image1"
             alt=""
-            width={250}
-            height={250}
+            width={400}
+            height={400}
           />
         </div>
 
-        <div className="Content2 my-4">
-          <h1 className="text-lg text-center font-bold">BUDGET MANAGEMENT</h1>
-          <p className="text-sm text-center">
+        <div className="Content2 mx-7  text-center my-12">
+          <div className="Heading2 text-lg  text-center font-bold lg:text-4xl lg:mb-2 lg:mt-3 lg:float-right lg:w-1/2 hover:-translate-y-5 transform transition">BUDGET MANAGEMENT
+          <p className="text-sm text-left lg:text-xl text-green-500 lg:w-1/2 lg:my-7 lg:mx-12">
             A PLATFORM TO HELP YOU HAVE A TRACK ON YOUR EXPENDITURE AND HELP YOU
             SAVE MONEY
           </p>
+          </div>
           <Image
             src={Budget}
-            className="image2"
+            className="image2 mt-5"
             alt=""
             width={250}
             height={250}
           />
         </div>
 
-
-        <div className="Content3 my-4">
-          <h1 className="text-lg text-center font-bold">SPILT & PAY</h1>
-          <p className="text-sm text-center">
+        
+        <div className="Content3 my-4 mx-7 ">
+          <div className="text-lg text-center font-bold lg:text-4xl lg:mb-2 lg:mt-3 lg:float-left hover:-translate-y-5 transform transition">SPILT & PAY
+          <p className="text-sm text-left lg:text-xl text-green-500 lg:w-1/2 lg:my-12 ">
             A PLATFORM WHERE APART FROM DIGITALLY PAYING, YOU CAN ALSO SPILT THE
             BILL
           </p>
+          </div>
           <Image
             src={splitpay}
-            className="image3"
+            className="image3  mx-4 mt-3"
             alt=""
-            width={250}
-            height={250}
+            width={300}
+            height={300}
+            
           />
         </div>
       </div>
+        <div className="footer bg-green-300 text-center font-bold">
+        TEAM Variator
+        </div>
+     
 
     </div>
   );
