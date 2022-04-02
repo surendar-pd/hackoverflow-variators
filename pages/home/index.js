@@ -27,7 +27,7 @@ useEffect(() => {
 return (
     <div className="w-full h-screen flex flex-col">
     <div className="w-full flex-1 p-4">
-        <Header />
+        <Header setCurrentPage= {setCurrentPage}/>
         <div className="w-full h-full">
         {currentPage === "dashboard" ? (
             <Dashboard currentUser={currentUser} />

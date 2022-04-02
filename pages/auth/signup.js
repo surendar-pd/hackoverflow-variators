@@ -12,6 +12,8 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import toast, { Toaster } from "react-hot-toast";
 import Image from "next/image";
 import logo from "../../assets/Logo.png";
+import QRCode from 'qrcode'
+
 
 const SignUp = () => {
   const router = useRouter();
@@ -38,9 +40,12 @@ const SignUp = () => {
             photoURL: entries.avatar,
           })
             .then(() => {
-              sendEmailVerification(auth.currentUser);
+              QRCode.toDataURL(user.uid)
+  .then(url => {
+    sendEmailVerification(auth.currentUser);
               setDoc(doc(db, "users", user.uid),{
                 name: entries.name,
+                qrcode: url,
                 dob: entries.dob,
                 email: entries.email,
                 avatar: entries.avatar,
@@ -51,6 +56,11 @@ const SignUp = () => {
                 
                 router.replace("/auth/verification")
               }).catch(err => toast.error(err.message));
+  })
+  .catch(err => {
+    console.error(err)
+  })
+              
 
 
             })

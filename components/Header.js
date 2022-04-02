@@ -16,7 +16,7 @@ const Header = ({ title, icon }) => {
       </div>
       {/* <h1 className="text-xl">Hi <span className="font-semibold">{user?.displayName || "..."}</span></h1> */}
       {/* <button onClick={() => {signOut(auth); router.push('/')}}>sign out</button> */}
-      <IconButton onClick={() => router.push("/home/scanqr")}>
+      <IconButton onClick={() => router.push('/home/scanqr')}>
         <QrCodeScannerIcon />
       </IconButton>
     </header>

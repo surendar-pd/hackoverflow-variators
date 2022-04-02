@@ -2830,7 +2830,7 @@ punycode@^2.1.0:
   resolved "https://registry.yarnpkg.com/punycode/-/punycode-2.1.1.tgz#b58b010ac40c22c5657616c8d2c2c02c7bf479ec"
   integrity sha512-XRsRjdf+j5ml+y/6GKHPZbrF/8p2Yga0JPtdqTIY2Xe5ohJPD9saDJJLPvp9+NSBprVvevdXZybnj2cv8OEd0A==
 
-qrcode@^1.5.0:
+qrcode@^1.4.4, qrcode@^1.5.0:
   version "1.5.0"
   resolved "https://registry.yarnpkg.com/qrcode/-/qrcode-1.5.0.tgz#95abb8a91fdafd86f8190f2836abbfc500c72d1b"
   integrity sha512-9MgRpgVc+/+47dFvQeD6U2s0Z92EsKzcHogtum4QB+UNd025WOJSHvn/hjk9xmzj7Stj95CyUAs31mrjxliEsQ==
@@ -2899,6 +2899,13 @@ react-qr-reader@^3.0.0-beta-1:
     "@zxing/browser" "0.0.7"
     "@zxing/library" "^0.18.3"
     rollup "^2.67.2"
+
+react-qrcodes@^1.0.7:
+  version "1.0.7"
+  resolved "https://registry.yarnpkg.com/react-qrcodes/-/react-qrcodes-1.0.7.tgz#f8eb476d0a6d9179103a16b347114f59453f4c66"
+  integrity sha512-CIxRhGYsHq9WEnDwfCCMt0N+RfmQC3ppWFsFfOFbF6vrCzLmkOkGx/Q4HX2RWFI7A8b/zEoSsDF5JlwsMGu0RA==
+  dependencies:
+    qrcode "^1.4.4"
 
 react-transition-group@^4.4.2:
   version "4.4.2"
