@@ -36,7 +36,7 @@ export default function Home() {
                   aria-current="page"
                   href="/"
                 >
-                  HOME
+                <div className="home text-xs"> HOME </div>
                 </Link>
               </li>
               
@@ -46,7 +46,7 @@ export default function Home() {
                   aria-current="page"
                   href="#Content"
                 >
-                  FEATURES
+                <div className="features text-xs"> FEATURES </div> 
                 </Link>
               </li>
             </ul>
@@ -58,7 +58,7 @@ export default function Home() {
                   aria-current="page"
                   href="/auth/login"
                 >
-                SIGN IN/REGISTER
+                <div className="getstarted text-xs"> GET STARTED </div>
                 </Link>
               </li>
 
@@ -73,7 +73,7 @@ export default function Home() {
       </div>
 
       
-        <div className="Content1 my-4 lg:mx-7 lg:text-center my-12" id="Content">
+        <div className="Content1 my-4 p-4 lg:mx-7 lg:text-center my-12" id="Content">
           <div className="text-lg text-center  font-bold lg:text-4xl lg:mb-2 lg:mt-6 lg:float-left lg:w-1/2 hover:-translate-y-5 transform transition ">SPEND NOW PAY LATER
           <p className="text-sm text-left lg:text-xl text-green-500 lg:w-1/2 lg:my-7 lg:mx-12">
             THE PLATFORM TO HELP YOU BUT THE THINGS YOU ALWAYS WANTED TO, WITH THE
